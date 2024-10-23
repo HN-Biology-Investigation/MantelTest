@@ -1,0 +1,116 @@
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+
+VERCHR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/VERCHR.csv")###leer la tabla
+aov(VERCHR~Sistema,VERCHR)#### Hacer el analisis con la variable dependiente seguido de la variable independiente
+VERCHRanova<-aov(VERCHR~Sistema,VERCHR)#### guardar los resultados del analisis en el archivo llamado Avesanova
+summary(VERCHRanova)### Ver los resultados del anova
+tapply(VERCHR$VERCHR,VERCHR$Sistema,mean)##### para visualizar las medias de la riqueza de aves por sistema
+tapply(VERCHR$VERCHR,VERCHR$Sistema,sd)####### para visualizar la desviacion estandar de la riqueza de aves por sistema
+#attach(VERCHR)#########Permite separar las columnas
+#tapply(VERCHR,Sistema,mean)##### Ahora tenemos otra forma para visualizar las medias de la riqueza de aves por sistema
+#boxplot(VERCHR~Sistema)####Grafico de caja
+boxplot(VERCHR$VERCHR~VERCHR$Sistema,main="Abundancia Vermivora chrysoptera",xlab="Sistema",ylab="Abundancia",ylim=range(0:7))
+VERCHRTukey<-TukeyHSD(VERCHR,"Sistema")# Guarda los resultados de la prueba Tukey en el archivo AvesTukey
+plot(VERCHRTurkey)### para graficar la prueba de turke
+VERCHRTukey### visualizar los datos de la prueba Turkey
+
+
+PSAWAG<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/PSAWAG.csv")###leer la tabla
+aov(PSAWAG~Sistema,PSAWAG)#### Hacer el analisis con la variable dependiente seguido de la variable independiente
+PSAWAGanova<-aov(PSAWAG~Sistema,PSAWAG)#### guardar los resultados del analisis en el archivo llamado Avesanova
+summary(PSAWAGanova)### Ver los resultados del anova
+tapply(PSAWAG$VERCHR,PSAWAG$Sistema,mean)##### para visualizar las medias de la riqueza de aves por sistema
+tapply(PSAWAG$PSAWAG,PSAWAG$Sistema,sd)####### para visualizar la desviacion estandar de la riqueza de aves por sistema
+#attach(PSAWAG)#########Permite separar las columnas
+#tapply(PSAWAG,Sistema,mean)##### Ahora tenemos otra forma para visualizar las medias de la riqueza de aves por sistema
+#boxplot(PSAWAG~Sistema)####Grafico de caja
+boxplot(PSAWAG$PSAWAG~PSAWAG$Sistema,main="Abundancia summary(PSAWAGanova)",xlab="Sistema",ylab="Abundancia",ylim=range(0:30))
+PSAWAGTukey<-TukeyHSD(PSAWAG,"Sistema")# Guarda los resultados de la prueba Tukey en el archivo AvesTukey
+plot(PSAWAGTurkey)### para graficar la prueba de turke
+PSAWAGTukey### visualizar los datos de la prueba Turkey
+
+
+
+############################################
+###Barplot
+VERCHRmedia <- tapply(VERCHR$VERCHR, VERCHR$Sistema, mean)###VERCHR MEDIA OJOOOO   calcular la media de riqueza de aves por sistema
+library(gplots)#### cargar este paquete
+abajoVERCHR <- tapply(VERCHR$VERCHR, VERCHR$Sistema, function(v) t.test(v)$conf.int[1])
+arribaVERCHR <- tapply(VERCHR$Riqueza, VERCHR$Sistema, function(v) t.test(v)$conf.int[2])### desconosco esta parte, y desconosco los nombres de abajo y arriba
+
+######Grafico
+#par(mfrow=c(1,1)) #filas,columnas
+#par(mar=c(5,5,3,2)+0.1) #margenes
+#barplot2(AvesRmedia, plot.ci=T, 
+ #       ci.l=abajo, ci.u=arriba, 
+  #      main = "Riqueza de aves" , 
+   #     xlab= "Sistema" , ylab= "Riqueza" , 
+    #    ylim=c(0, 60), 
+     #   col="white")
+#text(x=1.3, y=29, labels="p<0.001")
+#arrows(x = 1.1, y = 29, x1=.7, y1= 29 , length = 0.05, angle = 90,
+ #      code = 2, col = par("fg"), lty = par("lty"),
+  #     lwd = par("lwd"))
+#arrows(x=1.5, y= 29, x1 = 1.9, y1 = 29 , length = 0.05, angle = 90,
+ #      code = 2, col = par("fg"), lty = par("lty"),
+  #     lwd = par("lwd"))
+
+
+###Grafico sencillo
+par(mfrow=c(1,1)) #filas,columnas
+par(mar=c(5,5,3,2)+0.1) #margenes
+barplot2(VERCHR, plot.ci=T, 
+         ci.l=abajo, ci.u=arriba, 
+         main = "VERCHR" , 
+         xlab= "Sistema" , ylab= "Abundancia" , 
+         ylim=c(0, 10), 
+         col="white")
+
+PSAWAGmedia <- tapply(PSAWAG$PSAWAG, PSAWAG$Sistema, mean)###VERCHR MEDIA OJOOOO   calcular la media de riqueza de aves por sistema
+library(gplots)#### cargar este paquete
+abajoPSAWAG <- tapply(PSAWAG$PSAWAG, PSAWAG$Sistema, function(v) t.test(v)$conf.int[1])
+arribaPSAWAG <- tapply(PSAWAG$PSAWAG, PSAWAG$Sistema, function(v) t.test(v)$conf.int[2])### desconosco esta parte, y desconosco los nombres de abajo y arriba
+
+
+
+par(mfrow=c(1,1)) #filas,columnas
+par(mar=c(5,5,3,2)+0.1) #margenes
+barplot2(PSAWAGmedia, plot.ci=T, 
+         ci.l=abajoPSAWAG, ci.u=arribaPSAWAG, 
+         main = "PSAWAG" , 
+         xlab= "Sistema" , ylab= "Abundancia" , 
+         ylim=c(0, 10), 
+         col="white")
+
+
+
+####boxplot
+VERCHR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/VERCHR.csv")
+boxplot(VERCHR$VERCHR~VERCHR$Sistema,main="Abundancia Vermivora chrysoptera",xlab="Sistema",ylab="Abundancia",ylim=range(0:7))
+
+CARPUS<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/CARPUS.csv")
+boxplot(CARPUS$CARPUS~CARPUS$Sistema,main="Abundancia CARPUS",xlab="Sistema",ylab="Abundancia",ylim=range(0:20))
+
+SETVIR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/SETVIR.csv")
+boxplot(SETVIR$SETVIR~SETVIR$Sistema,main="Abundancia SETVIR",xlab="Sistema",ylab="Abundancia",ylim=range(0:30))
+
+SETMAG<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/SETMAG.csv")
+boxplot(SETMAG$SETMAG~SETMAG$Sistema,main="Abundancia SETMAG",xlab="Sistema",ylab="Abundancia",ylim=range(0:15))
+
+VERCYA<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/VERCYA.csv")
+boxplot(VERCYA$VERCYA~VERCYA$Sistema,main="Abundancia Vermivora cyanoptera",xlab="Sistema",ylab="Abundancia",ylim=range(0:5))
+
+SETPEN<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/SETPEN.csv")
+boxplot(SETPEN$SETPEN~SETPEN$Sistema,main="Abundancia SETPEN",xlab="Sistema",ylab="Abundancia",ylim=range(0:10))
+
+PSAWAG<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/PSAWAG.csv")
+boxplot(PSAWAG$PSAWAG~PSAWAG$Sistema,main="Abundancia PSAWAG",xlab="Sistema",ylab="Abundancia",ylim=range(0:35))
+
+VIRPHI<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/VIRPHI.csv")
+boxplot(VIRPHI$VIRPHI~VIRPHI$Sistema,main="Abundancia VIRPHI",xlab="Sistema",ylab="Abundancia",ylim=range(0:15))
+
+DIVDIV<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DIVDIV.csv")
+boxplot(DIVDIV$DIVDIV~DIVDIV$Sistema,main="Abundancia DIVDIV",xlab="Sistema",ylab="Abundancia",ylim=range(0:30))
+
+HYLMUS<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/HYLMUS.csv")
+boxplot(HYLMUS$HYLMUS~HYLMUS$Sistema,main="Abundancia HYLMUS",xlab="Sistema",ylab="Abundancia",ylim=range(0:5))

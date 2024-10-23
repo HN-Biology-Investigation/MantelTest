@@ -1,0 +1,41 @@
+## Como realizar la rarefaccion##
+## seleccionar direccion de trabajo##
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF")
+library(vegan)
+
+library(BiodiversityR)
+library(vegan)
+
+
+## Llamar tablas##
+
+DAIBBP<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/BP/DAIB_BP.csv")
+DAICBP<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/BP/DAIC_BP.csv")
+BOSQUEBP<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/BP/BOSQUEBP.csv")
+SOMBRABP<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/BP/SOMBRABP.CSV")
+SOLBP<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/BP/SOLBP.csv")
+
+## Grafico##
+
+daiBBP<-specaccum(DAIBBP,"rarefaction")
+daiCBP<-specaccum(DAICBP,"rarefaction")
+solBP<-specaccum(SOLBP,"rarefaction")
+bosqueBP<-specaccum(BOSQUEBP,"rarefaction")
+sombraBP<-specaccum(SOMBRABP,"rarefaction")
+
+
+mi.azul <- rgb(0, 0, 1, 0.3) 
+mi.rojo <- rgb(, 0, 1, 0.3)
+mi.verde <- rgb(0, 1, 0, 0.3)
+mi.rojo2 <- rgb(0.7, 0.2, 0.1, 0.3)
+mi.verde2 <- rgb(0.1, 0.7, 0.2, 0.3)
+
+
+
+plot(daiBBP, ci.type="poly", col="green", lwd=2, ci.lty=0, ci.col=mi.verde, xlab = "No de Muestreos", ylab = "No de Especies", main= "Especies de Bosque Primario")
+plot(daiCBP, add=TRUE,ci.type="poly", col="blue", lwd=2, ci.lty=0, ci.col=mi.azul)
+plot(solBP, add=TRUE,ci.type="poly", col="red", lwd=2, ci.lty=0, ci.col=mi.rojo)
+plot(sombraBP, add=TRUE,ci.type="poly", col="orange", lwd=2, ci.lty=0, ci.col=mi.rojo2)
+plot(bosqueBP, add=TRUE,ci.type="poly", col="green4", lwd=2, ci.lty=0, ci.col=mi.verde2)
+

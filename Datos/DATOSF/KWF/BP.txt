@@ -1,0 +1,106 @@
+## Como realizar la rarefaccion##
+## seleccionar direccion de trabajo##
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/KWF")
+
+
+
+## Llamar tablas##
+
+Riqueza<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/KWF/Riqueza.csv")
+
+
+###Prueba de normalidad##
+
+library(normtest) ###REALIZA 5 PRUEBAS DE NORMALIDAD###
+library(nortest) ###REALIZA 10 PRUEBAS DE NORMALIDAD###
+library(moments) ###REALIZA 1 PRUEBA DE NORMALIDAD###
+Pruebas de Normalidad del Paquete “normtest”
+
+###Prueba de Anderson-Darling###
+ad.test(Riqueza[,2])
+
+###Prueba de Cramer-von Mises###
+###Es útil para pequeñas muestras y usa los momentos como criterio.###
+cvm.test(Riqueza[,2])
+
+###Pruena de Lilliefors (Kolmogorov-Smirnov)###
+lillie.test(Riqueza[,2])
+
+###Prueba de Pearson chi-square###
+###basada en una distribución Ji cuadrado y que corresponde a una prueba de bondad de ajuste.###
+pearson.test(Riqueza[,2])
+
+###Prueba de Shapiro-Francia###
+sf.test(Riqueza[,2])
+
+###Pruebas de Normalidad del Paquete “nortest”##
+
+###Prueba de Jarque Bera###
+jb.norm.test(Riqueza[,2])
+
+
+###Prueba de Geary###
+###Usa los valores acumulados muestrales, sus medias y desviaciones estándar.###
+geary.norm.test(Riqueza[,2])
+
+
+###Prueba de Hegazy-Green###
+hegazy1.norm.test(Riqueza[,2], nrepl=20000) ###nrepl: considera el número de replicas en simulación de Monte Carlo.###
+
+###Prueba de Jarque-Bera###
+###Utiliza un estadístico en la prueba que involucra la curtosis y la asimetría.###
+###Usada por economistas.###
+jb.norm.test(Riqueza[,2], nrepl=2000)
+
+
+###Prueba de Kurtosis###
+kurtosis.norm.test(Riqueza[,2], nrepl=2000)
+
+
+###Prueba de Skewness###
+skewness.norm.test(Riqueza[,2], nrepl=2000)
+
+###Prueba de Spiegelhalter###
+spiegelhalter.norm.test(Riqueza[,2], nrepl=2000)
+
+
+###Puerba de Weisberg-Bingham
+wb.norm.test(Riqueza[,2], nrepl=2000)
+
+
+###Prueba de Frosini###
+
+frosini.norm.test(Riqueza[,2])
+
+
+
+###Pruebas de Normalidad del Paquete “moments”#####
+
+
+
+###Prueba de Agostino###
+agostino.test(Riqueza[,2])
+
+###Funciones incluidas en los paquetes básicos de ###
+
+###Prueba de Shapiro-Wilk###
+###Es más poderosa cuando se compara con otras pruebas de normalidad cuando la muestra es pequeña.###
+shapiro.test(Riqueza[,2])
+
+
+#######Anova###
+aov.Riqueza<-aov(Riqueza~Sistema,Riqueza)
+
+
+summary(aov.Riqueza)
+
+tapply(Riqueza$Riqueza,Riqueza$Sistema,mean)
+
+tapply(Riqueza$Riqueza,Riqueza$Sistema,sd)
+
+#####Prueba de Tukey####
+
+RiquezaTukey <-TukeyHSD(aov.Riqueza,"Sistema")
+
+RiquezaTukey

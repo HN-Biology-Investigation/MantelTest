@@ -1,0 +1,12 @@
+###################NMDS##############################################
+
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/NMDS")
+
+library(vegan)
+
+Datos<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/NMDS/NMDS.csv")
+
+
+
+example_Datos=metaMDS(community_matrix,k=2,trymax=100)

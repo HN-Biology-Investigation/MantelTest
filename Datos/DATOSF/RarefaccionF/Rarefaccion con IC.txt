@@ -1,0 +1,44 @@
+setwd("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF")
+library(vegan)
+
+
+## Llamar tablas##
+
+DAIBT<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/Todas/DAIB_T.csv")
+DAICT<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/Todas/DAIC_T.csv")
+BOSQUET<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/Todas/BOSQUE.csv")
+SOMBRAT<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/Todas/SOMBRA.CSV")
+SOLT<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/RarefaccionF/Todas/SOL.csv")
+
+library(BiodiversityR)
+library(vegan)
+
+DAIBT <- specaccum(DAIBT)
+
+plot(DAIBT)
+
+#Curva con intervalos de confianza en polígonos
+plot(DAIBT, ci.type="poly", col="blue", lwd=2, ci.lty=0, ci.col="grey90") 
+
+
+
+daiB<-specaccum(DAIBT,"rarefaction")
+daiC<-specaccum(DAICT,"rarefaction")
+sol<-specaccum(SOLT,"rarefaction")
+bosque<-specaccum(BOSQUET,"rarefaction")
+sombra<-specaccum(SOMBRAT,"rarefaction")
+
+mi.azul <- rgb(0, 0, 1, 0.3) 
+mi.rojo <- rgb(, 0, 1, 0.3)
+mi.verde <- rgb(0, 1, 0, 0.3)
+mi.rojo2 <- rgb(0.7, 0.2, 0.1, 0.3)
+mi.verde2 <- rgb(0.1, 0.7, 0.2, 0.3)
+
+
+plot(sombra, ci.type="poly", col="orange", lwd=2, ci.lty=0, ci.col=mi.rojo2, xlab = "No de Muestreos", ylab = "No de Especies", main= "Riqueza de especies")
+plot(daiC, add=TRUE,ci.type="poly", col="blue", lwd=2, ci.lty=0, ci.col=mi.azul)
+plot(sol, add=TRUE,ci.type="poly", col="red", lwd=2, ci.lty=0, ci.col=mi.rojo)
+plot(daiB, add=TRUE,ci.type="poly", col="green4", lwd=2, ci.lty=0, ci.col=mi.verde)
+plot(bosque, add=TRUE,ci.type="poly", col="green", lwd=2, ci.lty=0, ci.col=mi.verde2)
+
+

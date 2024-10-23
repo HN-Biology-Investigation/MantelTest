@@ -1,0 +1,547 @@
+####Grafico de cajas con desviacion estandar
+
+####VERCHR
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+VERCHR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/VERCHR.csv")
+
+VERCHR$Sistema = factor(VERCHR$Sistema,
+                      levels=unique(VERCHR$Sistema))
+
+
+library(ggplot2)
+
+qplot(x    = Sistema , 
+      y    = Mean,
+      data = Sum) +
+
+
+library(rcompanion)
+
+Sum = groupwiseMean(VERCHR ~ Sistema,
+                    data   = VERCHR,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(FSA)
+
+Sum = Summarize(VERCHR ~ Sistema, 
+                data=VERCHR)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Vermivora chrysoptera") 
+
+
+####  HYLMUS
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+HYLMUS<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/GLM/HYLMUS.csv")
+
+HYLMUS$Sistema = factor(HYLMUS$Sistema,
+                      levels=unique(HYLMUS$Sistema))
+
+
+library(ggplot2)
+
+qplot(x    = Sistema , 
+      y    = Mean,
+      data = Sum) +
+
+
+library(rcompanion)
+
+Sum = groupwiseMean(HYLMUS ~ Sistema,
+                    data   = HYLMUS,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(FSA)
+
+Sum = Summarize(HYLMUS ~ Sistema, 
+                data=HYLMUS)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Hylocichla mustelina")
+
+#### VERCYA
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+VERCYA<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/VERCYA.csv")
+
+VERCYA$Sistema = factor(VERCYA$Sistema,
+                      levels=unique(VERCYA$Sistema))
+
+
+library(ggplot2)
+
+qplot(x    = Sistema , 
+      y    = Mean,
+      data = Sum) +
+
+
+library(rcompanion)
+
+Sum = groupwiseMean(VERCYA ~ Sistema,
+                    data   = VERCYA,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(FSA)
+
+Sum = Summarize(VERCYA ~ Sistema, 
+                data=VERCYA)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Vermivora cyanoptera") 
+
+###### CARPUS
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+CARPUS<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/CARPUS.csv")
+
+CARPUS$Sistema = factor(CARPUS$Sistema,
+                      levels=unique(CARPUS$Sistema))
+
+library(FSA)
+
+Sum = Summarize(CARPUS ~ Sistema, 
+                data=CARPUS)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Cardenilla pusilla") 
+
+
+######DIVDIV
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+DIVDIV<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DIVDIV.csv")
+
+DIVDIV$Sistema = factor(DIVDIV$Sistema,
+                      levels=unique(DIVDIV$Sistema))
+
+library(FSA)
+
+Sum = Summarize(DIVDIV ~ Sistema, 
+                data=DIVDIV)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Dives dives") 
+
+
+##### PSAWAG
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+PSAWAG<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/PSAWAG.csv")
+
+PSAWAG$Sistema = factor(PSAWAG$Sistema,
+                      levels=unique(PSAWAG$Sistema))
+
+library(FSA)
+
+Sum = Summarize(PSAWAG ~ Sistema, 
+                data=PSAWAG)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Psaracolius wagleri") 
+
+##### SETMAG
+
+SETMAG<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/SETMAG.csv")
+
+SETMAG$Sistema = factor(SETMAG$Sistema,
+                      levels=unique(SETMAG$Sistema))
+
+library(FSA)
+
+Sum = Summarize(SETMAG ~ Sistema, 
+                data=SETMAG)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Setophaga magnolia")
+
+##### SETPEN
+
+SETPEN<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/SETPEN.csv")
+
+SETPEN$Sistema = factor(SETPEN$Sistema,
+                      levels=unique(SETPEN$Sistema))
+
+library(FSA)
+
+Sum = Summarize(SETPEN ~ Sistema, 
+                data=SETPEN)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Setophaga pensilvanica")
+
+##### SETVIR
+
+SETVIR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/SETVIR.csv")
+
+SETVIR$Sistema = factor(SETVIR$Sistema,
+                      levels=unique(SETVIR$Sistema))
+
+library(FSA)
+
+Sum = Summarize(SETVIR ~ Sistema, 
+                data=SETVIR)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Setophaga virens")
+
+##### VIRPHI
+
+VIRPHI<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/VIRPHI.csv")
+
+VIRPHI$Sistema = factor(VIRPHI$Sistema,
+                      levels=unique(VIRPHI$Sistema))
+
+library(FSA)
+
+Sum = Summarize(VIRPHI ~ Sistema, 
+                data=VIRPHI)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Vireo philadelphicus")
+
+##### Migratorias
+
+Migratorias<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Migratorias.csv")
+
+Migratorias$Sistema = factor(Migratorias$Sistema,
+                      levels=unique(Migratorias$Sistema))
+
+library(FSA)
+
+Sum = Summarize(Migratorias ~ Sistema, 
+                data=Migratorias)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Riqueza")+
+    labs(title = "Riqueza de Aves Migratoria Neotropicales")
+
+##### Residentes
+
+Residentes<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Residentes.csv")
+
+Residentes$Sistema = factor(Residentes$Sistema,
+                      levels=unique(Residentes$Sistema))
+
+library(FSA)
+
+Sum = Summarize(Residentes ~ Sistema, 
+                data=Residentes)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Riqueza")+
+    labs(title = "Riqueza de Aves 
+
+##### Riqueza
+
+Riqueza<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Riqueza.csv")
+
+Riqueza$Sistema = factor(Riqueza$Sistema,
+                      levels=unique(Riqueza$Sistema))
+
+library(FSA)
+
+Sum = Summarize(Riqueza ~ Sistema, 
+                data=Riqueza)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Riqueza")+
+    labs(title = "Riqueza de Aves")

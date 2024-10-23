@@ -1,0 +1,41 @@
+## Como realizar la rarefaccion##
+## seleccionar direccion de trabajo##
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion")
+library(vegan)
+
+
+## Llamar tablas##
+
+DAIR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Residentes/DAIR.csv")
+SOLR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Residentes/SOLR.csv")
+SOMBRAR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Residentes/SOMBRAR.csv")
+BOSQUER<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Residentes/BOSQUER.csv")
+
+## Grafico##
+
+daiR<-specaccum(DAIR,"rarefaction")
+solR<-specaccum(SOLR,"rarefaction")
+bosqueR<-specaccum(BOSQUER,"rarefaction")
+sombraR<-specaccum(SOMBRAR,"rarefaction")
+plot(daiR, xlab = "No de Muestreos", ylab = "No de Especies", main= "Especies Residentes")
+plot(solR, add=TRUE,col="red")
+plot(sombraR, add=TRUE,col="blue")
+plot(bosqueR, add=TRUE,col="green")
+legend(x = "bottomright",legend=c("DAI","SOL","SOMBRA","BOSQUE"),
+fill=c("black","red","blue","green"), cex=0.4)
+
+##Guardar##
+Especies<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Rarefaccion.csv")
+Rarefaccion<-specaccum(Especies,"rarefaction")
+plot(Rarefaccion, xlab = "No de Muestreos", ylab = "No de Especies", main= "Curva de Acumulacion de Especies")
+
+
+png("migrafico.png") #Preparamos un fichero para guardar
+hist(y) #Dibujamos el histograma de y
+dev.off() #Se cierra/guarda en el fichero elegido
+
+
+jpeg("migrafico.jpeg") #Preparamos un fichero para guardar
+hist(y) #Dibujamos el histograma de y
+dev.off() #Se cierra/guarda en el fichero elegido

@@ -1,0 +1,654 @@
+####Prueba de normalidad###
+
+###Hipótesis
+####H0: La muestra proviene de una distribución normal.###
+
+####H1: La muestra no proviene de una distribución normal.###
+
+####Para pruebas de normalidad siempre se plantean así las hipótesis.###
+####Nivel de Significancia###
+####El nivel de significancia que se trabajará es de 0.05. Alfa=0.05###
+
+####Criterio de Decisión###
+
+###Si P < Alfa Se rechaza Ho###
+
+###Si p >= Alfa No se rechaza Ho###
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+CARPUS<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/CARPUS.csv")
+SETMAG<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/SETMAG.csv")
+SETVIR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/SETVIR.csv")
+SETPEN<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/SETPEN.csv")
+HYLMUS<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/HYLMUS.csv")
+VERCHR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/VERCHR.csv")
+VERCYA<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/VERCYA.csv")
+DIVDIV<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/DIVDIV.csv")
+PSAWAG<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/PSAWAG.csv")
+VIRPHI<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/Especies/VIRPHI.csv")
+
+
+
+
+####Cargar
+library(normtest) ###REALIZA 5 PRUEBAS DE NORMALIDAD###
+library(nortest) ###REALIZA 10 PRUEBAS DE NORMALIDAD###
+library(moments) ###REALIZA 1 PRUEBA DE NORMALIDAD###
+
+Prueba de Shapiro-Wilk###
+###Es más poderosa cuando se compara con otras pruebas de normalidad cuando la muestra es pequeña.###
+shapiro.test(CARPUS[,2])
+shapiro.test(SETMAG[,2])
+shapiro.test(SETVIR[,2])
+shapiro.test(HYLMUS[,2])
+shapiro.test(VERCHR[,2])
+shapiro.test(VERCYA[,2])
+shapiro.test(DIVDIV[,2])
+shapiro.test(PSAWAG[,2])
+shapiro.test(SETPEN[,2])
+shapiro.test(VIRPHI[,2])
+
+
+Prueba de Kurtosis###
+kurtosis.norm.test(CARPUS[,2], nrepl=2000)
+kurtosis.norm.test(SETMAG[,2])
+kurtosis.norm.test(SETVIR[,2])
+kurtosis.norm.test(HYLMUS[,2])
+kurtosis.norm.test(VERCHR[,2])
+kurtosis.norm.test(VERCYA[,2])
+kurtosis.norm.test(DIVDIV[,2])
+kurtosis.norm.test(PSAWAG[,2])
+kurtosis.norm.test(VIRPHI[,2])
+kurtosis.norm.test(SETPEN[,2])
+
+
+Pruena de Lilliefors (Kolmogorov-Smirnov)###
+lillie.test(CARPUS[,2])
+lillie.test(SETMAG[,2])
+lillie.test(SETVIR[,2])
+lillie.test(HYLMUS[,2])
+lillie.test(VERCHR[,2])
+lillie.test(VERCYA[,2])
+lillie.test(DIVDIV[,2])
+lillie.test(PSAWAG[,2])
+lillie.test(SETPEN[,2])
+lillie.test(VIRPHI[,2])
+
+
+#########Tipo de distribucion#####################################################################################
+
+
+library(ggplot2)
+library(dplyr)
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+CARPUSC <-select_if(CARPUS, is.numeric)
+summary(CARPUSC)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of CARPUS##
+ggplot(CARPUSC, aes(x = CARPUS)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+SETMAGC <-select_if(SETMAG, is.numeric)
+summary(SETMAG)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of Riqueza##
+ggplot(SETMAGC, aes(x = SETMAG)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+SETVIRC <-select_if(SETVIR, is.numeric)
+summary(SETVIR)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of Riqueza##
+ggplot(SETVIRC, aes(x = SETVIR)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+HYLMUSC <-select_if(HYLMUS, is.numeric)
+summary(HYLMUS)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of Riqueza##
+ggplot(HYLMUSC, aes(x = HYLMUS)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+VERCHRC <-select_if(VERCHR, is.numeric)
+summary(VERCHR)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of Riqueza##
+ggplot(VERCHRC, aes(x = VERCHR)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+VERCYAC <-select_if(VERCYA, is.numeric)
+summary(VERCYA)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of Riqueza##
+ggplot(VERCYAC, aes(x = VERCYA)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+DIVDIVC <-select_if(DIVDIV, is.numeric)
+summary(DIVDIV)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of Riqueza##
+ggplot(DIVDIVC, aes(x = DIVDIV)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+PSAWAGC <-select_if(PSAWAG, is.numeric)
+summary(PSAWAG)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of Riqueza##
+ggplot(PSAWAGC, aes(x = PSAWAG)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+SETPENC <-select_if(SETPEN, is.numeric)
+summary(SETPEN)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of Riqueza##
+ggplot(SETPENC, aes(x = SETPEN)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+##Step 1) Check continuous variables#####################################################################################
+
+
+
+VIRPHIC <-select_if(VIRPHI, is.numeric)
+summary(VIRPHI)
+
+# Histogram with kernel density curve##
+###Let's look closer at the distribution of Riqueza##
+ggplot(VIRPHIC, aes(x = VIRPHI)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+
+
+
+###############################################################################################################################
+
+
+
+
+####Grafico de cajas con desviacion estandar
+
+####VERCHR#####
+
+
+VERCHR$Sistema = factor(VERCHR$Sistema,
+                      levels=unique(VERCHR$Sistema))
+
+
+library(ggplot2)
+
+qplot(x    = Sistema , 
+      y    = Mean,
+      data = Sum) +
+
+
+library(rcompanion)
+
+Sum = groupwiseMean(VERCHR ~ Sistema,
+                    data   = VERCHR,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(FSA)
+
+Sum = Summarize(VERCHR ~ Sistema, 
+                data=VERCHR)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Vermivora chrysoptera") 
+
+###############################################################################################################################
+
+
+####  HYLMUS
+
+
+HYLMUS$Sistema = factor(HYLMUS$Sistema,
+                      levels=unique(HYLMUS$Sistema))
+
+
+library(ggplot2)
+
+qplot(x    = Sistema , 
+      y    = Mean,
+      data = Sum) +
+
+
+library(rcompanion)
+
+Sum = groupwiseMean(HYLMUS ~ Sistema,
+                    data   = HYLMUS,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(FSA)
+
+Sum = Summarize(HYLMUS ~ Sistema, 
+                data=HYLMUS)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Hylocichla mustelina")
+
+
+###############################################################################################################################
+
+#### VERCYA
+
+
+VERCYA$Sistema = factor(VERCYA$Sistema,
+                      levels=unique(VERCYA$Sistema))
+
+
+library(ggplot2)
+
+qplot(x    = Sistema , 
+      y    = Mean,
+      data = Sum) +
+
+
+library(rcompanion)
+
+Sum = groupwiseMean(VERCYA ~ Sistema,
+                    data   = VERCYA,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(FSA)
+
+Sum = Summarize(VERCYA ~ Sistema, 
+                data=VERCYA)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Vermivora cyanoptera") 
+
+###############################################################################################################################
+
+###### CARPUS
+
+
+CARPUS$Sistema = factor(CARPUS$Sistema,
+                      levels=unique(CARPUS$Sistema))
+
+library(FSA)
+
+Sum = Summarize(CARPUS ~ Sistema, 
+                data=CARPUS)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Cardenilla pusilla") 
+
+
+###############################################################################################################################
+
+
+######DIVDIV
+
+DIVDIV<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/GLM/DIVDIV.csv")
+
+DIVDIV$Sistema = factor(DIVDIV$Sistema,
+                      levels=unique(DIVDIV$Sistema))
+
+library(FSA)
+
+Sum = Summarize(DIVDIV ~ Sistema, 
+                data=DIVDIV)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) + 
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Dives dives") 
+
+
+###############################################################################################################################
+
+
+##### PSAWAG
+
+
+PSAWAG$Sistema = factor(PSAWAG$Sistema,
+                      levels=unique(PSAWAG$Sistema))
+
+library(FSA)
+
+Sum = Summarize(PSAWAG ~ Sistema, 
+                data=PSAWAG)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Psaracolius wagleri") 
+
+
+###############################################################################################################################
+
+##### SETMAG
+
+
+
+SETMAG$Sistema = factor(SETMAG$Sistema,
+                      levels=unique(SETMAG$Sistema))
+
+library(FSA)
+
+Sum = Summarize(SETMAG ~ Sistema, 
+                data=SETMAG)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Setophaga magnolia")
+
+###############################################################################################################################
+
+##### SETPEN
+
+
+SETPEN$Sistema = factor(SETPEN$Sistema,
+                      levels=unique(SETPEN$Sistema))
+
+library(FSA)
+
+Sum = Summarize(SETPEN ~ Sistema, 
+                data=SETPEN)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Setophaga pensilvanica")
+
+
+###############################################################################################################################
+
+##### SETVIR
+
+SETVIR$Sistema = factor(SETVIR$Sistema,
+                      levels=unique(SETVIR$Sistema))
+
+library(FSA)
+
+Sum = Summarize(SETVIR ~ Sistema, 
+                data=SETVIR)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Setophaga virens")
+
+###############################################################################################################################
+
+##### VIRPHI
+
+VIRPHI$Sistema = factor(VIRPHI$Sistema,
+                      levels=unique(VIRPHI$Sistema))
+
+library(FSA)
+
+Sum = Summarize(VIRPHI ~ Sistema, 
+                data=VIRPHI)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Vireo philadelphicus")
+
+
+
+
+
+
+
+

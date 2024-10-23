@@ -1,0 +1,167 @@
+
+	Geary test for normality
+
+data:  Datos[, 4]
+d = 0.79795, p-value = 0.524
+
+package ‘rjags’ successfully unpacked and MD5 sums checked
+package ‘coda’ successfully unpacked and MD5 sums checked
+package ‘R2WinBUGS’ successfully unpacked and MD5 sums checked
+package ‘mcmc’ successfully unpacked and MD5 sums checked
+package ‘sys’ successfully unpacked and MD5 sums checked
+package ‘R2jags’ successfully unpacked and MD5 sums checked
+package ‘MCMCpack’ successfully unpacked and MD5 sums checked
+package ‘askpass’ successfully unpacked and MD5 sums checked
+package ‘ps’ successfully unpacked and MD5 sums checked
+package ‘pcaPP’ successfully unpacked and MD5 sums checked
+package ‘flexmix’ successfully unpacked and MD5 sums checked
+package ‘prabclus’ successfully unpacked and MD5 sums checked
+package ‘diptest’ successfully unpacked and MD5 sums checked
+package ‘reshape’ successfully unpacked and MD5 sums checked
+package ‘vcd’ successfully unpacked and MD5 sums checked
+package ‘laeken’ successfully unpacked and MD5 sums checked
+package ‘ranger’ successfully unpacked and MD5 sums checked
+package ‘NADA’ successfully unpacked and MD5 sums checked
+package ‘truncnorm’ successfully unpacked and MD5 sums checked
+package ‘miscF’ successfully unpacked and MD5 sums checked
+package ‘openssl’ successfully unpacked and MD5 sums checked
+package ‘processx’ successfully unpacked and MD5 sums checked
+package ‘e1071’ successfully unpacked and MD5 sums checked
+package ‘pls’ successfully unpacked and MD5 sums checked
+package ‘cvTools’ successfully unpacked and MD5 sums checked
+package ‘rrcov’ successfully unpacked and MD5 sums checked
+package ‘fpc’ successfully unpacked and MD5 sums checked
+package ‘GGally’ successfully unpacked and MD5 sums checked
+package ‘kernlab’ successfully unpacked and MD5 sums checked
+package ‘mclust’ successfully unpacked and MD5 sums checked
+package ‘sROC’ successfully unpacked and MD5 sums checked
+package ‘tidyr’ successfully unpacked and MD5 sums checked
+package ‘VIM’ successfully unpacked and MD5 sums checked
+package ‘zCompositions’ successfully unpacked and MD5 sums checked
+package ‘httr’ successfully unpacked and MD5 sums checked
+package ‘selectr’ successfully unpacked and MD5 sums checked
+package ‘tinytex’ successfully unpacked and MD5 sums checked
+package ‘callr’ successfully unpacked and MD5 sums checked
+package ‘DEoptimR’ successfully unpacked and MD5 sums checked
+package ‘sgeostat’ successfully unpacked and MD5 sums checked
+package ‘robCompositions’ successfully unpacked and MD5 sums checked
+package ‘mnormt’ successfully unpacked and MD5 sums checked
+package ‘xml2’ successfully unpacked and MD5 sums checked
+package ‘rvest’ successfully unpacked and MD5 sums checked
+package ‘rmarkdown’ successfully unpacked and MD5 sums checked
+package ‘webshot’ successfully unpacked and MD5 sums checked
+package ‘robustbase’ successfully unpacked and MD5 sums checked
+package ‘mvoutlier’ successfully unpacked and MD5 sums checked
+package ‘psych’ successfully unpacked and MD5 sums checked
+package ‘energy’ successfully unpacked and MD5 sums checked
+package ‘kableExtra’ successfully unpacked and MD5 sums checked
+package ‘MVN’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\David Murillo\AppData\Local\Temp\Rtmp6RjsLj\downloaded_packages
+$multivariateNormality
+           Test       HZ p value MVN
+1 Henze-Zirkler 6.288874       0  NO
+
+$univariateNormality
+          Test  Variable Statistic   p value Normality
+1 Shapiro-Wilk  Riqueza     0.9462  <0.001      NO    
+2 Shapiro-Wilk  Viento      0.7422  <0.001      NO    
+3 Shapiro-Wilk   Cielo      0.8203  <0.001      NO    
+4 Shapiro-Wilk    Rio       0.6187  <0.001      NO    
+
+$Descriptives
+          n      Mean   Std.Dev Median Min Max 25th 75th      Skew   Kurtosis
+Riqueza 249 4.2289157 3.1030369      4   0  15    2    6 0.5763737 -0.2766485
+Viento  249 1.5261044 0.7461739      1   0   5    1    2 1.4191471  3.1882394
+Cielo   249 1.1204819 1.0783529      1   0   4    0    2 0.3181215 -1.2448428
+Rio     249 0.5983936 1.0622544      0   0   5    0    1 1.6527705  1.6780893
+
+$multivariateNormality
+           Test       HZ p value MVN
+1 Henze-Zirkler 6.288874       0  NO
+
+$univariateNormality
+          Test  Variable Statistic   p value Normality
+1 Shapiro-Wilk  Riqueza     0.9462  <0.001      NO    
+2 Shapiro-Wilk  Viento      0.7422  <0.001      NO    
+3 Shapiro-Wilk   Cielo      0.8203  <0.001      NO    
+4 Shapiro-Wilk    Rio       0.6187  <0.001      NO    
+
+$Descriptives
+          n      Mean   Std.Dev Median Min Max 25th 75th      Skew   Kurtosis
+Riqueza 249 4.2289157 3.1030369      4   0  15    2    6 0.5763737 -0.2766485
+Viento  249 1.5261044 0.7461739      1   0   5    1    2 1.4191471  3.1882394
+Cielo   249 1.1204819 1.0783529      1   0   4    0    2 0.3181215 -1.2448428
+Rio     249 0.5983936 1.0622544      0   0   5    0    1 1.6527705  1.6780893
+
+$multivariateNormality
+           Test       HZ p value MVN
+1 Henze-Zirkler 3.590956       0  NO
+
+$univariateNormality
+          Test  Variable Statistic   p value Normality
+1 Shapiro-Wilk  Riqueza     0.9462  <0.001      NO    
+2 Shapiro-Wilk  Viento      0.7422  <0.001      NO    
+3 Shapiro-Wilk   Cielo      0.8203  <0.001      NO    
+4 Shapiro-Wilk    Rio       0.6187  <0.001      NO    
+5 Shapiro-Wilk   Hora       0.9588  <0.001      NO    
+6 Shapiro-Wilk    Mes       0.6541  <0.001      NO    
+
+$Descriptives
+          n        Mean     Std.Dev Median Min  Max 25th 75th      Skew   Kurtosis
+Riqueza 249   4.2289157   3.1030369      4   0   15    2    6 0.5763737 -0.2766485
+Viento  249   1.5261044   0.7461739      1   0    5    1    2 1.4191471  3.1882394
+Cielo   249   1.1204819   1.0783529      1   0    4    0    2 0.3181215 -1.2448428
+Rio     249   0.5983936   1.0622544      0   0    5    0    1 1.6527705  1.6780893
+Hora    249 955.9036145 215.8606899    944 607 1551  751 1108 0.4860243 -0.2938268
+Mes     249   3.4658635   3.1813214      2   1   12    2    4 1.9574110  2.7119550
+
+           Test       HZ p value MVN
+1 Henze-Zirkler 3.590956       0  NO
+           Test       HZ p value MVN
+1 Henze-Zirkler 3.590956       0  NO
+$multivariateNormality
+           Test       HZ p value MVN
+1 Henze-Zirkler 2.543568       0  NO
+
+$univariateNormality
+           Test  Variable Statistic   p value Normality
+1  Shapiro-Wilk  Riqueza     0.9462  <0.001      NO    
+2  Shapiro-Wilk  Viento      0.7422  <0.001      NO    
+3  Shapiro-Wilk   Cielo      0.8203  <0.001      NO    
+4  Shapiro-Wilk    Rio       0.6187  <0.001      NO    
+5  Shapiro-Wilk   Hora       0.9588  <0.001      NO    
+6  Shapiro-Wilk    Mes       0.6541  <0.001      NO    
+7  Shapiro-Wilk  VERCHR      0.3486  <0.001      NO    
+8  Shapiro-Wilk  VERCYA      0.1941  <0.001      NO    
+9  Shapiro-Wilk  HYLMUS      0.1937  <0.001      NO    
+10 Shapiro-Wilk  VIRSOL      0.2194  <0.001      NO    
+11 Shapiro-Wilk  CARPUS      0.6743  <0.001      NO    
+12 Shapiro-Wilk  SETCIT      0.3403  <0.001      NO    
+13 Shapiro-Wilk  SETVIR      0.6755  <0.001      NO    
+14 Shapiro-Wilk  DUMCAR      0.3009  <0.001      NO    
+15 Shapiro-Wilk  SETMAG      0.6169  <0.001      NO    
+16 Shapiro-Wilk  SETPEN      0.4770  <0.001      NO    
+17 Shapiro-Wilk  OREPER      0.1135  <0.001      NO    
+
+$Descriptives
+          n         Mean     Std.Dev Median Min  Max 25th 75th       Skew    Kurtosis
+Riqueza 249   4.22891566   3.1030369      4   0   15    2    6  0.5763737  -0.2766485
+Viento  249   1.52610442   0.7461739      1   0    5    1    2  1.4191471   3.1882394
+Cielo   249   1.12048193   1.0783529      1   0    4    0    2  0.3181215  -1.2448428
+Rio     249   0.59839357   1.0622544      0   0    5    0    1  1.6527705   1.6780893
+Hora    249 955.90361446 215.8606899    944 607 1551  751 1108  0.4860243  -0.2938268
+Mes     249   3.46586345   3.1813214      2   1   12    2    4  1.9574110   2.7119550
+VERCHR  249   0.10441767   0.3193058      0   0    2    0    0  2.9354979   7.9634347
+VERCYA  249   0.04016064   0.1967313      0   0    1    0    0  4.6560221  19.7579392
+HYLMUS  249   0.04417671   0.2246328      0   0    2    0    0  5.4280147  31.9293576
+VIRSOL  249   0.05220884   0.2403063      0   0    2    0    0  4.8392683  25.0266906
+CARPUS  249   0.46184739   0.6218065      0   0    4    0    1  1.4969602   3.9149495
+SETCIT  249   0.10040161   0.3142449      0   0    2    0    0  3.0247016   8.5757060
+SETVIR  249   0.60240964   0.9324754      0   0    6    0    1  2.0499300   5.5757371
+DUMCAR  249   0.08032129   0.2723374      0   0    1    0    0  3.0696725   7.4528690
+SETMAG  249   0.34136546   0.5607596      0   0    2    0    1  1.3945941   0.9593790
+SETPEN  249   0.20080321   0.4577286      0   0    3    0    0  2.4574646   7.0536843
+OREPER  249   0.06827309   0.5230161      0   0    7    0    0 10.5272978 126.4912407
+

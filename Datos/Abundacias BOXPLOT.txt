@@ -1,0 +1,152 @@
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+Abundance_sp<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Abundacia_System_sp.csv")
+VERCHR<-(Abundance_sp[35,2:5])
+VERCYA<-(Abundance_sp[15,2:5])
+HYLMUS<-(Abundance_sp[78,2:5])
+CARPUS<-(Abundance_sp[4,1:4])
+boxplot(CARPUS, main="Abundancia Cardellina pusilla",xlab="Sistema",ylab="Abundacia")
+boxplot(HYLMUS, main="Abundancia Hylocichla mustelina",xlab="Sistema",ylab="Abundacia")
+boxplot(VERCHR, main="Abundancia Vermivora chrysoptera",xlab="Sistema",ylab="Abundacia")
+boxplot(VERCYA, main="Abundancia Vermivora cyanoptera",xlab="Sistema",ylab="Abundacia")
+
+##Riqueza
+Riqueza<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Riqueza de especies.csv")
+Todas<-(Riqueza[1,2:5])
+Migratorias<-(Riqueza[2,2:5])
+Residentes<-(Riqueza[3,2:5])
+boxplot(Riqueza2,main="Riqueza de aves",xlab="Sistema",ylab="Riqueza",cex.lab="0.8",cex.lab="0.8",)
+
+boxplot(Todas,main="Riqueza de aves",xlab="Sistema",ylab="Riqueza",notch=TRUE,ylim=range(10:80))
+
+qplot(Todas,Underheight,data=veg,geom='boxplot',ylab='Understory Height (cm)',xlab='Habitat Type',main='Boxplots of Understory Height')
+
+p<-qplot(Todas,meanS,geom='point',fill=I("grey50"),xlab='Riqueza',ylab='Sistema de cultivo',ylim=c(10,80))
+> p + geom_errorbar(limits,width=0.5)
+
+qplot(year,Underheight,data=veg,geom='boxplot',ylab='Understory Height (cm)',xlab='Year',
++ main='Boxplots of Understory Height')
+
+Abundace<- data.frame(Abundance=c("Total","Migratorias","Residentes"),
+sd=c(17.68,6.37,11.27)
+mean.temp=c(60.75,20,40.5)
+
+###########################
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+
+getwd()
+
+Riqueza_sp<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Riqueza_sp.csv")
+Migratorias<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Migratorias.csv")
+Residentes<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Residentes.csv")
+
+boxplot(Riqueza_sp,main="Riqueza de aves",xlab="Sistema",ylab="Riqueza",ylim=range(5:60))
+
+boxplot(Riqueza_sp,main="Riqueza de aves",xlab="Sistema",ylab="Riqueza",ylim=range(5:60))
+> boxplot(Residentes,main="Riqueza de aves",xlab="Sistema",ylab="Riqueza",ylim=range(5:60))
+> boxplot(Residentes,main="Riqueza de aves",xlab="Sistema",ylab="Riqueza",ylim=range(5:40))
+> boxplot(Migratorias,main="Aves migratorias Neotropicales",xlab="Sistema",ylab="Riqueza",ylim=range(5:40))
+> boxplot(Migratorias,main="Aves migratorias Neotropicales",xlab="Sistema",ylab="Riqueza",ylim=range(5:30))
+> boxplot(Residentes,main="Riqueza de aves residentes",xlab="Sistema",ylab="Riqueza",ylim=range(5:40))
+
+
+#############Anova
+#Aves<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Anova.csv")###leer la tabla
+#aov(Riqueza~Sistema,Aves)#### Hacer el analisis con la variable dependiente seguido de la variable independiente
+#Avesanova<-aov(Riqueza~Sistema,Aves)#### guardar los resultados del analisis en el archivo llamado Avesanova
+#summary(Avesanova)### Ver los resultados del anova
+#tapply(Aves$Riqueza,Aves$Sistema,mean)##### para visualizar las medias de la riqueza de aves por sistema
+#tapply(Aves$Riqueza,Aves$Sistema,sd)####### para visualizar la desviacion estandar de la riqueza de aves por sistema
+#attach(Aves)#########Permite separar las columnas
+#tapply(Riqueza,Sistema,mean)##### Ahora tenemos otra forma para visualizar las medias de la riqueza de aves por sistema
+#boxplot(Riqueza~Sistema)####Grafico de caja
+####En el gráfico se puede observar una diferencia clara entre el grupo de dosis “c” y los otros dos grupos. Naturalmente, 
+###viendo el gráfico y la existencia de un efecto significativo de Dosis en el ANOVA, lo que hemos de hacer ahora son comparaciones 
+###múltiples. (En caso de que el ANOVA no hubiera sido significativo, no debes proceder a efectuar estas pruebas.) 
+###De esta manera podemos determinar entre qué condiciones experimentales hay diferencias significativas. Para ello, 
+###emplearemos el método de Tukey.
+#AvesTukey<-TukeyHSD(Avesanova,"Sistema")# Guarda los resultados de la prueba Tukey en el archivo AvesTukey
+#plot(AvesTukey)### para graficar la prueba de turkey
+#AvesTukey### visualizar los datos de la prueba Turkey
+
+AvesR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/AnovaR.csv")###leer la tabla
+aov(Riqueza~Sistema,AvesR)#### Hacer el analisis con la variable dependiente seguido de la variable independiente
+AvesRanova<-aov(Riqueza~Sistema,AvesR)#### guardar los resultados del analisis en el archivo llamado Avesanova
+summary(AvesRanova)### Ver los resultados del anova
+tapply(AvesR$Riqueza,AvesR$Sistema,mean)##### para visualizar las medias de la riqueza de aves por sistema
+tapply(AvesR$Riqueza,AvesR$Sistema,sd)####### para visualizar la desviacion estandar de la riqueza de aves por sistema
+attach(AvesR)#########Permite separar las columnas
+tapply(Riqueza,Sistema,mean)##### Ahora tenemos otra forma para visualizar las medias de la riqueza de aves por sistema
+#boxplot(Riqueza~Sistema)####Grafico de caja
+boxplot(AvesR$Riqueza~AvesR$Sistema,main="Riqueza de aves",xlab="Sistema",ylab="Riqueza",ylim=range(5:55))
+#AvesRTukey<-TukeyHSD(AvesRanova,"Sistema")# Guarda los resultados de la prueba Tukey en el archivo AvesTukey
+plot(AvesRTukey)### para graficar la prueba de turkey
+AvesRTukey### visualizar los datos de la prueba Turkey
+
+AvesM<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/AnovaM.csv")###leer la tabla
+aov(Migratorias~Sistema,AvesM)#### Hacer el analisis con la variable dependiente seguido de la variable independiente
+AvesManova<-aov(Migratorias~Sistema,AvesM)#### guardar los resultados del analisis en el archivo llamado Avesanova
+summary(AvesManova)### Ver los resultados del anova
+tapply(AvesM$Migratorias,AvesM$Sistema,mean)##### para visualizar las medias de la riqueza de aves por sistema
+tapply(AvesM$Migratorias,AvesM$Sistema,sd)####### para visualizar la desviacion estandar de la riqueza de aves por sistema
+attach(AvesM)#########Permite separar las columnas
+tapply(Migratorias,Sistema,mean)##### Ahora tenemos otra forma para visualizar las medias de la riqueza de aves por sistema
+#boxplot(Migratorias~Sistema)####Grafico de caja
+boxplot(AvesM$Migratorias~AvesM$Sistema,main="Riqueza de aves Migratorias Neotropicales",xlab="Sistema",ylab="Riqueza",ylim=range(5:25))
+AvesMTukey<-TukeyHSD(AvesManova,"Sistema")# Guarda los resultados de la prueba Tukey en el archivo AvesTukey
+plot(AvesMTukey)### para graficar la prueba de turkey
+AvesMTukey### visualizar los datos de la prueba Turkey
+
+AvesRE<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/AnovaRE.csv")###leer la tabla
+aov(Residentes~Sistema,AvesRE)#### Hacer el analisis con la variable dependiente seguido de la variable independiente
+AvesREanova<-aov(Residentes~Sistema,AvesRE)#### guardar los resultados del analisis en el archivo llamado Avesanova
+summary(AvesREanova)### Ver los resultados del anova
+tapply(AvesRE$Residentes,AvesRE$Sistema,mean)##### para visualizar las medias de la riqueza de aves por sistema
+tapply(AvesRE$Residentes,AvesRE$Sistema,sd)####### para visualizar la desviacion estandar de la riqueza de aves por sistema
+attach(AvesRE)#########Permite separar las columnas
+tapply(Residentes,Sistema,mean)##### Ahora tenemos otra forma para visualizar las medias de la riqueza de aves por sistema
+#boxplot(Residentes~Sistema)####Grafico de caja
+boxplot(AvesRE$Residentes~AvesRE$Sistema,main="Riqueza de aves Residentes",xlab="Sistema",ylab="Riqueza",ylim=range(5:35))
+AvesRETukey<-TukeyHSD(AvesREanova,"Sistema")# Guarda los resultados de la prueba Tukey en el archivo AvesTukey
+plot(AvesRETukey)### para graficar la prueba de turkey
+AvesRETukey### visualizar los datos de la prueba Turkey
+
+
+############################################
+###Barplot
+AvesRmedia <- tapply(AvesR$Riqueza, Aves$Sistema, mean)###calcular la media de riqueza de aves por sistema
+library(gplots)#### cargar este paquete
+abajo <- tapply(AvesR$Riqueza, AvesR$Sistema, function(v) t.test(v)$conf.int[1])
+arriba <- tapply(AvesR$Riqueza, AvesR$Sistema, function(v) t.test(v)$conf.int[2])### desconosco esta parte, y desconosco los nombres de abajo y arriba
+
+######Grafico
+#par(mfrow=c(1,1)) #filas,columnas
+#par(mar=c(5,5,3,2)+0.1) #margenes
+#barplot2(AvesRmedia, plot.ci=T, 
+ #       ci.l=abajo, ci.u=arriba, 
+  #      main = "Riqueza de aves" , 
+   #     xlab= "Sistema" , ylab= "Riqueza" , 
+    #    ylim=c(0, 60), 
+     #   col="white")
+#text(x=1.3, y=29, labels="p<0.001")
+#arrows(x = 1.1, y = 29, x1=.7, y1= 29 , length = 0.05, angle = 90,
+ #      code = 2, col = par("fg"), lty = par("lty"),
+  #     lwd = par("lwd"))
+#arrows(x=1.5, y= 29, x1 = 1.9, y1 = 29 , length = 0.05, angle = 90,
+ #      code = 2, col = par("fg"), lty = par("lty"),
+  #     lwd = par("lwd"))
+
+
+###Grafico sencillo
+par(mfrow=c(1,1)) #filas,columnas
+par(mar=c(5,5,3,2)+0.1) #margenes
+barplot2(AvesRmedia, plot.ci=T, 
+         ci.l=abajo, ci.u=arriba, 
+         main = "Riqueza de aves" , 
+         xlab= "Sistema" , ylab= "Riqueza" , 
+         ylim=c(0, 60), 
+         col="white")
+
+
+

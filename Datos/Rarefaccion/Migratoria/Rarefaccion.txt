@@ -1,0 +1,30 @@
+## Como realizar la rarefaccion##
+## seleccionar direccion de trabajo##
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion")
+library(vegan)
+
+
+## Llamar tablas##
+
+DAIM<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Migratoria/DAIM.csv")
+SOLM<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Migratoria/SOLM.csv")
+SOMBRAM<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Migratoria/SOMBRAM.csv")
+BOSQUEM<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Migratoria/BOSQUEM.csv")
+
+## Grafico##
+
+daiM<-specaccum(DAIM,"rarefaction")
+solM<-specaccum(SOLM,"rarefaction")
+bosqueM<-specaccum(BOSQUEM,"rarefaction")
+sombraM<-specaccum(SOMBRAM,"rarefaction")
+plot(daiM, xlab = "No de Muestreos", ylab = "No de Especies", main= "Especies Migratorias Neotropicales")
+plot(solM, add=TRUE,col="red")
+plot(sombraM, add=TRUE,col="blue")
+plot(bosqueM, add=TRUE,col="green")
+
+
+##Guardar##
+Especies<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Rarefaccion.csv")
+Rarefaccion<-specaccum(Especies,"rarefaction")
+plot(Rarefaccion, xlab = "No de Muestreos", ylab = "No de Especies", main= "Curva de Acumulacion de Especies")

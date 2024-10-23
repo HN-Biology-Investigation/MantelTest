@@ -1,0 +1,38 @@
+
+Call:
+glm(formula = formula, family = "gaussian", data = Datos)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-4.4913  -1.2728  -0.1913   0.9710   8.9579  
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  5.6643896  0.7241766   7.822 1.82e-13 ***
+Viento      -0.4731733  0.1756367  -2.694 0.007575 ** 
+Cielo       -0.2055736  0.1267293  -1.622 0.106130    
+Rio          0.2339557  0.1249699   1.872 0.062451 .  
+Hora        -0.0028041  0.0006168  -4.547 8.79e-06 ***
+Mes          0.0249967  0.0415061   0.602 0.547602    
+VERCHR       1.8049463  0.4687119   3.851 0.000152 ***
+VERCYA       1.6661067  0.7205248   2.312 0.021635 *  
+HYLMUS       1.9801473  0.5893043   3.360 0.000911 ***
+VIRSOL       0.9995179  0.5762078   1.735 0.084131 .  
+CARPUS       0.8071601  0.2122337   3.803 0.000183 ***
+SETCIT       1.1016991  0.4393947   2.507 0.012850 *  
+SETVIR       0.2865119  0.1573825   1.820 0.069974 .  
+DUMCAR       1.8017783  0.4807706   3.748 0.000225 ***
+SETMAG       1.1856266  0.2659358   4.458 1.29e-05 ***
+SETPEN       1.6350754  0.3126963   5.229 3.80e-07 ***
+OREPER       0.6143173  0.2490067   2.467 0.014346 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for gaussian family taken to be 4.025081)
+
+    Null deviance: 2387.95  on 248  degrees of freedom
+Residual deviance:  933.82  on 232  degrees of freedom
+AIC: 1071.8
+
+Number of Fisher Scoring iterations: 2
+

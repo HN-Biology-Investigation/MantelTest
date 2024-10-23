@@ -1,0 +1,58 @@
+####Grafico de cajas con desviacion estandar
+
+####MIOOLE
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+MIOOLE<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/DATOSF/GML/MIOOLE.csv")
+
+MIOOLE$Sistema = factor(MIOOLE$Sistema,
+                      levels=unique(MIOOLE$Sistema))
+
+
+library(ggplot2)
+
+qplot(x    = Sistema , 
+      y    = Mean,
+      data = Sum) +
+
+
+library(rcompanion)
+
+Sum = groupwiseMean(MIOOLE ~ Sistema,
+                    data   = MIOOLE,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(FSA)
+
+Sum = Summarize(MIOOLE ~ Sistema, 
+                data=MIOOLE)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Mionectes oleagineus") 
+
+

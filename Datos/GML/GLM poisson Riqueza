@@ -1,0 +1,38 @@
+
+Call:
+glm(formula = formula, family = "poisson", data = Datos)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.7495  -0.9653  -0.1450   0.6138   4.3167  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept)  1.8638286  0.1796921  10.372  < 2e-16 ***
+Viento      -0.1660727  0.0492197  -3.374 0.000741 ***
+Cielo       -0.0436348  0.0312741  -1.395 0.162944    
+Rio          0.0420106  0.0286352   1.467 0.142350    
+Hora        -0.0007133  0.0001631  -4.374 1.22e-05 ***
+Mes          0.0087609  0.0107930   0.812 0.416955    
+VERCHR       0.2467255  0.0926356   2.663 0.007736 ** 
+VERCYA       0.1908139  0.1381896   1.381 0.167337    
+HYLMUS       0.2758958  0.1044396   2.642 0.008250 ** 
+VIRSOL       0.1044793  0.1161922   0.899 0.368550    
+CARPUS       0.2010568  0.0492101   4.086 4.39e-05 ***
+SETCIT       0.2637481  0.0882272   2.989 0.002795 ** 
+SETVIR       0.0475695  0.0336948   1.412 0.158016    
+DUMCAR       0.3333710  0.0997920   3.341 0.000836 ***
+SETMAG       0.2558026  0.0570982   4.480 7.46e-06 ***
+SETPEN       0.2929018  0.0611909   4.787 1.70e-06 ***
+OREPER       0.1232915  0.0493770   2.497 0.012527 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 634.77  on 248  degrees of freedom
+Residual deviance: 340.08  on 232  degrees of freedom
+AIC: 1091.2
+
+Number of Fisher Scoring iterations: 5
+

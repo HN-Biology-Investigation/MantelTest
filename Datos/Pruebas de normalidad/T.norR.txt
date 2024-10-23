@@ -1,0 +1,6 @@
+
+	Pearson chi-square normality test
+
+data:  Datos[, 1]
+P = 223.41, p-value < 2.2e-16
+

@@ -1,0 +1,107 @@
+##### Primario
+Primario<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Primario.csv")
+
+Primario$Sistema = factor(Primarios$Sistema,
+                      levels=unique(Primario$Sistema))
+
+library(FSA)
+
+Sum = Summarize(Primario ~ Sistema, 
+                data=Primario)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Riqueza")+
+    labs(title = "Riqueza de Aves de bosque Primario")
+
+##### Secundario
+Secundario<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Secundario.csv")
+
+Secundario$Sistema = factor(Secundario$Sistema,
+                      levels=unique(Secundario$Sistema))
+
+library(FSA)
+
+Sum = Summarize(Secundario ~ Sistema, 
+                data=Secundario)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Riqueza")+
+    labs(title = "Riqueza de Aves de bosque Secundario")
+
+##### Perturbado
+Perturbado<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Perturbado.csv")
+
+Perturbado$Sistema = factor(Perturbado$Sistema,
+                      levels=unique(Perturbado$Sistema))
+
+library(FSA)
+
+Sum = Summarize(Perturbado ~ Sistema, 
+                data=Perturbado)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Riqueza")+
+    labs(title = "Riqueza de Aves de ecosistemas perturbados")

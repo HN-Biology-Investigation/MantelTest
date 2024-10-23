@@ -1,0 +1,184 @@
+####Perason and GML####
+
+
+###Prueba de normalidad###
+
+####Prueba de normalidad###
+
+###Hipótesis
+####H0: La muestra proviene de una distribución normal.###
+
+####H1: La muestra no proviene de una distribución normal.###
+
+####Para pruebas de normalidad siempre se plantean así las hipótesis.###
+####Nivel de Significancia###
+####El nivel de significancia que se trabajará es de 0.05. Alfa=0.05###
+
+####Criterio de Decisión###
+
+###Si P < Alfa Se rechaza Ho###
+
+###Si p >= Alfa No se rechaza Ho###
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+
+Datos<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/GML/GML.csv")
+
+library(“MVN”)
+
+
+dir.create("Pruebas de normalidad") # Crear carpeta con comando
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/Pruebas de normalidad")
+
+result <- mvn(data = Datos, mvnTest = "hz")
+T.nor<-mvn(data = Datos, mvnTest = "hz")
+sink("T.nor.txt") #guarda los datos en texto###
+print(T.nor) 
+
+sink()#para guardar los datos
+
+###
+
+#####Los datos al parecer no tiene una distribucion normal, por lo que### 
+###se prosigue ha realizar pruevas que no requieran distribucion normal###
+
+
+
+#########pruebas de correlacion###################
+
+##Step 1) Check continuous variables
+continuous <-select_if(Datos, is.numeric)
+summary(continuous)
+
+# Histogram with kernel density curve##
+library(ggplot2)
+ggplot(continuous, aes(x = Riqueza)) +
+    geom_density(alpha = .2, fill = "#FF6666")
+
+####Correlaciones por variable####
+
+
+anova <- aov(Riqueza~Hora, Datos)
+summary(anova)
+
+
+####Riqueza x hora ###
+
+
+library(ggplot2)
+ggplot(Datos, aes(x = Hora, y = Riqueza)) +
+    geom_point(aes(color = "DP"),
+               size = 0.5) +
+    stat_smooth(method = 'lm',
+                formula = y~poly(x, 2),
+                se = TRUE,
+                aes(color = "Linea de tendencia")) +
+    theme_classic()+
+    ylab("Riqueza")+
+    labs(title = "Relacion entre Riqueza y Hora")
+	
+
+####Riqueza x Rio ###
+
+
+library(ggplot2)
+ggplot(Datos, aes(x = Rio, y = Riqueza)) +
+    geom_point(aes(color = "DP"),
+               size = 0.5) +
+    stat_smooth(method = 'lm',
+                formula = y~poly(x, 2),
+                se = TRUE,
+                aes(color = "LT")) +
+    theme_classic()+
+    ylab("Riqueza")+
+    labs(title = "Relacion entre Riqueza y Rio")
+
+####Riqueza x Viento ###
+
+
+library(ggplot2)
+ggplot(Datos, aes(x = Viento, y = Riqueza)) +
+     geom_point(aes(color = "DP"),
+                size = 0.5) +
+     stat_smooth(method = 'lm',
+                 formula = y~poly(x, 2),
+                 se = TRUE,
+                 aes(color = "LT")) +
+     theme_classic() +
+     
+     ylab("Riqueza")+
+     labs(title = "Relacion entre Riqueza y Viento")
+
+
+####VERCHR x Riqueza ###
+
+
+library(ggplot2)
+ggplot(Datos, aes(x = VERCHR, y = Riqueza)) +
+     geom_point(aes(color = "DP"),
+                size = 0.5) +
+     stat_smooth(method = 'lm',
+                 formula = y~poly(x, 2),
+                 se = TRUE,
+                 aes(color = "LT")) +
+     theme_classic() +
+     
+     ylab("Riqueza")+
+     labs(title = "Relacion entre VERCHR y Riqueza")
+
+####HYLMUS x Riqueza ###
+
+
+library(ggplot2)
+ggplot(Datos, aes(x = HYLMUS, y = Riqueza)) +
+     geom_point(aes(color = "DP"),
+                size = 0.5) +
+     stat_smooth(method = 'lm',
+                 formula = y~poly(x, 2),
+                 se = TRUE,
+                 aes(color = "LT")) +
+     theme_classic() +
+     
+     ylab("Abundancia")+
+     labs(title = "Relacion entre HYLMUS y Riqueza")
+
+
+
+
+
+
+######## MODEL GML##
+setwd("C:/Users/David Murillo/R/Tesis/Datos/GML")
+
+formula <- Riqueza~.
+logit <- glm(formula, data = Datos, family = 'poisson')
+poisson<-summary(logit)
+sink("GLM poisson Riqueza") #guarda los datos en texto###
+print(poisson) 
+
+sink()
+
+
+glm(formula, data=data, family=linkfunction()
+Argument:
+- formula:  Equation used to fit the model- data: dataset used
+- Family:     - binomial: (link = "logit")			
+- gaussian: (link = "identity")			
+- Gamma:    (link = "inverse")			
+- inverse.gaussian: (link = "1/mu^2")			
+- poisson:  (link = "log")			
+- quasi:    (link = "identity", variance = "constant")			
+- quasibinomial:    (link = "logit")			
+- quasipoisson: (link = "log")	
+
+Valor p = a: La asociación es estadísticamente significativa
+Si el valor p es menor que o igual al nivel de significancia, usted puede concluir que hay una asociación estadísticamente
+significativa entre la variable de respuesta y el término.
+
+Valor p > a: La asociación no es estadísticamente significativa
+Si el valor p es mayor que el nivel de significancia, usted no puede concluir que existe una asociación estadísticamente 
+significativa entre la variable de respuesta y el término. 
+Convendría que vuelva a ajustar el modelo sin el término.
+
+

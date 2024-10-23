@@ -1,0 +1,140 @@
+####Grafico de cajas con desviacion estandar
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/")
+getwd()
+
+VERCHR<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/VERCHR.csv")
+
+VERCHR$Sistema = factor(VERCHR$Sistema,
+                      levels=unique(VERCHR$Sistema))
+
+###  Check the data frame
+
+Data
+
+str(VERCHR)
+
+summary(VERCHR)
+
+
+### Remove unnecessary objects
+
+#rm(Input)
+
+#Simple histogram
+
+#hist(VERCHR$VERCHR,
+ #    col="gray", 
+  #   main="",
+   #  xlab="VERCHR")
+
+#boxplot(VERCHR ~ Sistema,
+#       data=VERCHR,
+#       ylab="Sistema")
+
+library(rcompanion)
+
+#Sum = groupwiseMean(VERCHR ~ Sistema,
+                    data   = VERCHR,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(ggplot2)
+
+qplot(x    = Sistema , 
+      y    = Mean,
+      data = Sum) +
+
+
+library(rcompanion)
+
+Sum = groupwiseMean(VERCHR ~ Sistema,
+                    data   = VERCHR,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(FSA)
+
+Sum = Summarize(VERCHR ~ Sistema, 
+                data=VERCHR)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+   ###  This creates a new variable for standard error in our summary data frame
+   ###  Replace n with nvalid if there are missing values
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de Vermivora chrysoptera")
+
+
+
+
+library(rcompanion)
+
+Sum = groupwiseMean(CARPUS ~ Sistema,
+                    data   = CARPUS,
+                    conf   = 0.95,
+                    digits = 3)
+
+library(FSA)
+
+Sum = Summarize(CARPUS ~ Sistema, 
+                data=CARPUS)
+
+Sum$se = Sum$sd / sqrt(Sum$n)
+
+   ###  This creates a new variable for standard error in our summary data frame
+   ###  Replace n with nvalid if there are missing values
+
+library(ggplot2)
+
+pd = position_dodge(.2)   
+
+ggplot(Sum,                 
+       aes(x     = Sistema,
+           y     = mean,
+           )) +
+
+    geom_point(shape = 15, 
+               size  = 4, 
+             position = pd) +
+    geom_errorbar(aes(ymin  = mean - se,
+                      ymax  = mean + se),
+                      width = 0.2, 
+                      size  = 0.7, 
+                      position = pd) +
+    theme_bw() +
+    theme(axis.title = element_text(face = "bold")) +
+
+    ylab("Abundancia")+
+    labs(title = "Abundacia de CARPUS")
+
+
+
+
+
+
+
+
+    
+

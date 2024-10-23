@@ -1,0 +1,30 @@
+## Como realizar la rarefaccion##
+## seleccionar direccion de trabajo##
+
+setwd("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion")
+library(vegan)
+
+
+## Llamar tablas##
+
+DAIBP<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/BP/DAIBP.csv")
+SOLBP<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/BP/SOLBP.csv")
+SOMBRABP<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/BP/SOMBRABP.csv")
+BOSQUEBP<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/BP/BOSQUEBP.csv")
+
+## Grafico##
+
+daiBP<-specaccum(DAIBP,"rarefaction")
+solBP<-specaccum(SOLBP,"rarefaction")
+bosqueBP<-specaccum(BOSQUEBP,"rarefaction")
+sombraBP<-specaccum(SOMBRABP,"rarefaction")
+plot(daiBP, xlab = "No de Muestreos", ylab = "No de Especies", main= "Especies de Bosque Primario")
+plot(solBP, add=TRUE,col="red")
+plot(sombraBP, add=TRUE,col="blue")
+plot(bosqueBP, add=TRUE,col="green")
+
+
+##Guardar##
+Especies<-read.csv("C:/Users/David Murillo/R/Tesis/Datos/Rarefaccion/Rarefaccion.csv")
+Rarefaccion<-specaccum(Especies,"rarefaction")
+plot(Rarefaccion, xlab = "No de Muestreos", ylab = "No de Especies", main= "Curva de Acumulacion de Especies")
