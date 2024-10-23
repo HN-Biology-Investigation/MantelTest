@@ -149,7 +149,7 @@ vegan::mantel(bird_bc, distance_matrix_km, method = "spearman")
 ### Gráficos relevantes
 
 
-```{r}
+```{r, fig.show='hold'}
 
 bird_bc_dist <- as.dist(bird_bc)
 plot(hclust(bird_bc_dist))
