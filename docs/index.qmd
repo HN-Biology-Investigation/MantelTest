@@ -38,5 +38,111 @@ La prueba de Mantel se utiliza para evaluar la congruencia entre dos matrices de
 4)  Valor *P*.
 
 
+## Ejecicio de la clase
+
+::: panel-tabset 
+
+### Cargar paquetes
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+library(ecodist)
+library(vegan)
+library(geosphere)
+```
+
+
+### Ingreso de base de datos
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+BirdData <- read_excel("Data/Data_birds.xls", sheet = 1)
+BirdData2 <- read_excel("Data/Data_birds.xls", sheet = 2)
+BirdData3 <- read_excel("Data/Data_birds.xls", sheet = 3)
+
+
+BirdData <- BirdData %>% 
+  select(`Sitio nombre`, `Sitio #`, Especies) %>% 
+  mutate(Visita = "Uno")
+
+BirdData2 <- BirdData2 %>% 
+  select(`Sitio nombre`, `Sitio #...2`  , Especies) %>% 
+  mutate(Visita = "Dos")
+
+BirdData3 <- BirdData3 %>% 
+  select(`Sitio nombre`, `Sitio #...2`  , Especies) %>% 
+  mutate(Visita = "Tres")
+
+
+
+colnames(BirdData) <-c( "SitioNombre", "SitioCod", "Especies", "Visita")
+colnames(BirdData2) <-c( "SitioNombre", "SitioCod", "Especies", "Visita")
+colnames(BirdData3) <-c( "SitioNombre", "SitioCod", "Especies", "Visita")
+
+BirdFull <- rbind(BirdData, BirdData2, BirdData3)
+
+
+BirdWider <- BirdFull %>% 
+  group_by(SitioNombre, SitioCod, Especies) %>% 
+  summarise(Abundance = max(n())) %>% 
+  pivot_wider(names_from = Especies, values_from = Abundance,
+              values_fill = 0) %>% 
+  separate(SitioCod, into = c("Sitio", "Sistema"), sep = "(?<=[0-9])(?=[A-Za-z])" )
+
+Sitios <- read_excel("Data/Data_birds.xls", sheet = "PTS")
+
+# Unir base de datos
+
+DataBirdLoc <- Sitios %>% 
+  mutate(ID = as.character(ID)) %>% 
+  rename("Sitio" = ID,
+         "SitioNombre" = SiteName) %>% 
+  full_join(BirdWider, by = c("Sitio", "SitioNombre"))
+
+rownames(DataBirdLoc) <- DataBirdLoc$Sitio
+
+DataBirdLoc <- DataBirdLoc %>% 
+  na.omit()
+```
+
+
+### Estimacion de distancias distancias geograficas y ecologicas
+
+#### Estimar distancia geografica entre los sitios de estudio
+
+```{r}
+
+coords <- as.matrix(DataBirdLoc[, c("LONG", "LAT")])
+
+distance_matrix <- distm(coords, fun = distHaversine)
+distance_matrix_km <- distance_matrix / 1000
+
+colnames(distance_matrix_km) <- DataBirdLoc$Sitio
+```
+
+#### Estimar distancia ecologica entre los sitios de estudio
+
+```{r}
+bird_bc <- as.matrix(distance(DataBirdLoc[,15:150], "bray-curtis"))
+
+dim(bird_bc)           
+dim(distance_matrix_km)
+
+```
+
+
+### Prueba de Mantel
+
+```{r}
+vegan::mantel(bird_bc, distance_matrix_km, method = "spearman")
+```
+
+
+### Graficos relevantes
+
+
+:::
+
+
 
 ![HN Biology Investigation Academy](HN%20Cursos%20publicidad/HN%20Biology%20Inv%20large.jpg)
