@@ -103,6 +103,12 @@ rownames(DataBirdLoc) <- DataBirdLoc$Sitio
 
 DataBirdLoc <- DataBirdLoc %>% 
   na.omit()
+
+saveRDS(DataBirdLoc, "Data/DatosMantel.rds")
+```
+
+```{r}
+DataBirdLoc <- readRDS("Data/DatosMantel.rds")
 ```
 
 
