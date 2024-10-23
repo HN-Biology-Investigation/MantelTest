@@ -7,7 +7,36 @@ editor: visual
 
 [<img src="HN Cursos publicidad/HN Biology Inv Circle.jpg" align="right" width="100"/>](https://www.hnbiology.org/)
 
-Esta es una clase demostrativa en la que exploraremos el uso de la prueba de Mantel en ecología. Durante la sesión, explicaremos qué es la prueba de Mantel, cómo y para qué se utiliza, y proporcionaremos una guía práctica sobre cómo realizarla e interpretarla utilizando R
+Esta es una clase demostrativa en la que exploraremos el uso de la prueba de Mantel en ecología. Durante la sesión, explicaremos qué es la prueba de Mantel, cómo y para qué se utiliza, y proporcionaremos una guía práctica sobre cómo realizarla e interpretarla utilizando R.
+
+**Descripción de la prueba de Mantel basada en McCune y Grace (2002)**
+
+La prueba de Mantel se utiliza para probar la hipótesis nula de que no existe relación entre dos matrices cuadradas simétricas. Esta prueba evalúa la correlación entre matrices de distancia (o de similitud). Generalmente, cada matriz se calcula a partir de diferentes conjuntos de variables, medidos en la misma unidad de muestreo.
+
+La prueba de Mantel es una alternativa a la regresión de una matriz contra otra, evitando el problema de dependencia parcial dentro de cada matriz. Debido a que las celdas en las matrices no son independientes entre sí, no podemos aceptar el valor de *P* derivado de técnicas estándar que asumen independencia de las observaciones. Sin embargo, la correlación (*r*) puede utilizarse como una medida de la fuerza de la relación entre las matrices; en este contexto, *r* se denomina **estadística estandarizada de Mantel**, y los valores de *r* oscilan entre -1 y 1.
+
+**Cuándo utilizar la prueba de Mantel**
+
+La prueba de Mantel se utiliza para evaluar la congruencia entre dos matrices de distancias (o similitudes) de las mismas dimensiones. Ambas matrices deben referirse al mismo conjunto de entradas en el mismo orden. Por ejemplo, es útil cuando queremos evaluar la correspondencia entre:
+
+1)  Dos grupos de organismos en el mismo conjunto de unidades de muestreo (plantas e invertebrados).
+
+2)  Matrices de disimilitud que representan la estructura de comunidades antes y después de una perturbación.
+
+3)  Distancia geográfica y distancia ecológica.
+
+4)  Distancia genética y distancia geográfica.
+
+**Qué reportar**
+
+1)  Contenido y tamaño de las dos matrices.
+
+2)  Método de evaluación de la prueba estadística (aproximación asintótica de Mantel o randomización).
+
+3)  Estadística estandarizada de Mantel *r*.
+
+4)  Valor *P*.
+
 
 
 ![HN Biology Investigation Academy](HN%20Cursos%20publicidad/HN%20Biology%20Inv%20large.jpg)

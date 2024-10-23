@@ -70,7 +70,25 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><a href="https://www.hnbiology.org/"><img src="HN Cursos publicidad/HN Biology Inv Circle.jpg" align="right" width="100"></a></p>
-<p>Esta es una clase demostrativa en la que exploraremos el uso de la prueba de Mantel en ecología. Durante la sesión, explicaremos qué es la prueba de Mantel, cómo y para qué se utiliza, y proporcionaremos una guía práctica sobre cómo realizarla e interpretarla utilizando R</p>
+<p>Esta es una clase demostrativa en la que exploraremos el uso de la prueba de Mantel en ecología. Durante la sesión, explicaremos qué es la prueba de Mantel, cómo y para qué se utiliza, y proporcionaremos una guía práctica sobre cómo realizarla e interpretarla utilizando R.</p>
+<p><strong>Descripción de la prueba de Mantel basada en McCune y Grace (2002)</strong></p>
+<p>La prueba de Mantel se utiliza para probar la hipótesis nula de que no existe relación entre dos matrices cuadradas simétricas. Esta prueba evalúa la correlación entre matrices de distancia (o de similitud). Generalmente, cada matriz se calcula a partir de diferentes conjuntos de variables, medidos en la misma unidad de muestreo.</p>
+<p>La prueba de Mantel es una alternativa a la regresión de una matriz contra otra, evitando el problema de dependencia parcial dentro de cada matriz. Debido a que las celdas en las matrices no son independientes entre sí, no podemos aceptar el valor de <em>P</em> derivado de técnicas estándar que asumen independencia de las observaciones. Sin embargo, la correlación (<em>r</em>) puede utilizarse como una medida de la fuerza de la relación entre las matrices; en este contexto, <em>r</em> se denomina <strong>estadística estandarizada de Mantel</strong>, y los valores de <em>r</em> oscilan entre -1 y 1.</p>
+<p><strong>Cuándo utilizar la prueba de Mantel</strong></p>
+<p>La prueba de Mantel se utiliza para evaluar la congruencia entre dos matrices de distancias (o similitudes) de las mismas dimensiones. Ambas matrices deben referirse al mismo conjunto de entradas en el mismo orden. Por ejemplo, es útil cuando queremos evaluar la correspondencia entre:</p>
+<ol type="1">
+<li><p>Dos grupos de organismos en el mismo conjunto de unidades de muestreo (plantas e invertebrados).</p></li>
+<li><p>Matrices de disimilitud que representan la estructura de comunidades antes y después de una perturbación.</p></li>
+<li><p>Distancia geográfica y distancia ecológica.</p></li>
+<li><p>Distancia genética y distancia geográfica.</p></li>
+</ol>
+<p><strong>Qué reportar</strong></p>
+<ol type="1">
+<li><p>Contenido y tamaño de las dos matrices.</p></li>
+<li><p>Método de evaluación de la prueba estadística (aproximación asintótica de Mantel o randomización).</p></li>
+<li><p>Estadística estandarizada de Mantel <em>r</em>.</p></li>
+<li><p>Valor <em>P</em>.</p></li>
+</ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="HN%20Cursos%20publicidad/HN%20Biology%20Inv%20large.jpg" class="img-fluid figure-img"></p>
