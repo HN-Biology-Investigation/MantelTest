@@ -123,10 +123,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Estadística estandarizada de Mantel <em>r</em>.</p></li>
 <li><p>Valor <em>P</em>.</p></li>
 </ol>
-<section id="ejecicio-de-la-clase" class="level2">
-<h2 class="anchored" data-anchor-id="ejecicio-de-la-clase">Ejecicio de la clase</h2>
+<section id="ejercicio-de-la-clase" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-de-la-clase">Ejercicio de la clase</h2>
+<p>Asiste a la clase en vivo completamente gratis para conocer la explicación e interpretación de cada comando, así como de la prueba de Mantel. Para más información: <a href="https://www.hnbiology.org/">HN Biology Investigation</a></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Cargar paquetes</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Ingreso de base de datos</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Estimacion de distancias distancias geograficas y ecologicas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Prueba de Mantel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Graficos relevantes</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Cargar paquetes</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Ingreso de base de datos</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Estimación de distancias geográficas y ecológicas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Prueba de Mantel</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Gráficos relevantes</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
@@ -143,8 +144,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<section id="estimar-distancia-geografica-entre-los-sitios-de-estudio" class="level4">
-<h4 class="anchored" data-anchor-id="estimar-distancia-geografica-entre-los-sitios-de-estudio">Estimar distancia geografica entre los sitios de estudio</h4>
+<section id="estimar-la-distancia-geográfica-entre-los-sitios-de-estudio" class="level4">
+<h4 class="anchored" data-anchor-id="estimar-la-distancia-geográfica-entre-los-sitios-de-estudio">Estimar la distancia geográfica entre los sitios de estudio</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(DataBirdLoc[, <span class="fu">c</span>(<span class="st">"LONG"</span>, <span class="st">"LAT"</span>)])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -154,8 +155,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(distance_matrix_km) <span class="ot">&lt;-</span> DataBirdLoc<span class="sc">$</span>Sitio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="estimar-distancia-ecologica-entre-los-sitios-de-estudio" class="level4">
-<h4 class="anchored" data-anchor-id="estimar-distancia-ecologica-entre-los-sitios-de-estudio">Estimar distancia ecologica entre los sitios de estudio</h4>
+<section id="estimar-la-distancia-ecológica-entre-los-sitios-de-estudio" class="level4">
+<h4 class="anchored" data-anchor-id="estimar-la-distancia-ecológica-entre-los-sitios-de-estudio">Estimar la distancia ecológica entre los sitios de estudio</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>bird_bc <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">distance</span>(DataBirdLoc[,<span class="dv">15</span><span class="sc">:</span><span class="dv">150</span>], <span class="st">"bray-curtis"</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -185,14 +186,24 @@ Mantel statistic r: 0.2289
 
 Upper quantiles of permutations (null model):
    90%    95%  97.5%    99% 
-0.0798 0.1033 0.1290 0.1537 
+0.0826 0.1139 0.1384 0.1588 
 Permutation: free
 Number of permutations: 999</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
-
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>bird_bc_dist <span class="ot">&lt;-</span> <span class="fu">as.dist</span>(bird_bc)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">hclust</span>(bird_bc_dist))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

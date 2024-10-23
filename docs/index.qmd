@@ -38,7 +38,9 @@ La prueba de Mantel se utiliza para evaluar la congruencia entre dos matrices de
 4)  Valor *P*.
 
 
-## Ejecicio de la clase
+## Ejercicio de la clase
+
+Asiste a la clase en vivo completamente gratis para conocer la explicación e interpretación de cada comando, así como de la prueba de Mantel. Para más información: [HN Biology Investigation](https://www.hnbiology.org/)
 
 ::: panel-tabset 
 
@@ -112,9 +114,9 @@ DataBirdLoc <- readRDS("Data/DatosMantel.rds")
 ```
 
 
-### Estimacion de distancias distancias geograficas y ecologicas
+### Estimación de distancias geográficas y ecológicas
 
-#### Estimar distancia geografica entre los sitios de estudio
+#### Estimar la distancia geográfica entre los sitios de estudio
 
 ```{r}
 
@@ -126,7 +128,7 @@ distance_matrix_km <- distance_matrix / 1000
 colnames(distance_matrix_km) <- DataBirdLoc$Sitio
 ```
 
-#### Estimar distancia ecologica entre los sitios de estudio
+#### Estimar la distancia ecológica entre los sitios de estudio
 
 ```{r}
 bird_bc <- as.matrix(distance(DataBirdLoc[,15:150], "bray-curtis"))
@@ -144,7 +146,15 @@ vegan::mantel(bird_bc, distance_matrix_km, method = "spearman")
 ```
 
 
-### Graficos relevantes
+### Gráficos relevantes
+
+
+```{r}
+
+bird_bc_dist <- as.dist(bird_bc)
+plot(hclust(bird_bc_dist))
+```
+
 
 
 :::
