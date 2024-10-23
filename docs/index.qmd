@@ -1,0 +1,13 @@
+---
+title: "Clase desmostrativa: Prueba de Mantel"
+author: "David Murillo"
+format: html
+editor: visual
+---
+
+[<img src="HN Cursos publicidad/HN Biology Inv Circle.jpg" align="right" width="100"/>](https://www.hnbiology.org/)
+
+Esta es una clase demostrativa en la que exploraremos el uso de la prueba de Mantel en ecología. Durante la sesión, explicaremos qué es la prueba de Mantel, cómo y para qué se utiliza, y proporcionaremos una guía práctica sobre cómo realizarla e interpretarla utilizando R
+
+
+![HN Biology Investigation Academy](HN%20Cursos%20publicidad/HN%20Biology%20Inv%20large.jpg)
